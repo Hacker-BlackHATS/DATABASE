@@ -1,0 +1,8 @@
+To run .sql file directly in linux.
+STEP-1 : Open Terminal.
+STEP-2 : Type command:
+                    service mysql start;
+STEP-3 : Now,type command:
+                    mysql -u root -p;
+STEP-4 : Now,
+            type : source /file_path/filename.sql
