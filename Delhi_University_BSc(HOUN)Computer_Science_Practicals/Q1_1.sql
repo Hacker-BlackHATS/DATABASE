@@ -9,82 +9,207 @@ sudo /opt/lampp/lampp startmysql;sudo /opt/lamppp/bin/mysql -u root;
 _____________________________________________________________________________________________________________________________________
 
 
-1.) SELECT ENO,ENAME,JOB_TYPE,HIRE_DATE FROM EMPLOYEE;
+1.) SELECT 
+		ENO,ENAME,JOB_TYPE,HIRE_DATE 
+	FROM EMPLOYEE;
 _____________________________________________________________________________________________________________________________________
-2.) SELECT DISTINCT JOB_TYPE FROM EMPLOYEE;
+2.) SELECT 
+		DISTINCT JOB_TYPE 
+	FROM EMPLOYEE;
 _____________________________________________________________________________________________________________________________________
-3.) SELECT CONCAT_WS(',',ENAME,JOB_TYPE) FROM EMPLOYEE;
+3.) SELECT 
+		CONCAT_WS(',',ENAME,JOB_TYPE) 
+	FROM EMPLOYEE;
 _____________________________________________________________________________________________________________________________________
-4.) SELECT CONCAT_WS(', ',ENO,ENAME,JOB_TYPE,MANAGER,HIRE_DATE,DNO,COMMISSION,SALARY) AS THE_OUTPUT FROM EMPLOYEE;
+4.) SELECT 
+		CONCAT_WS(', ',ENO,ENAME,JOB_TYPE,MANAGER,HIRE_DATE,DNO,COMMISSION,SALARY) AS THE_OUTPUT 
+	FROM EMPLOYEE;
 _____________________________________________________________________________________________________________________________________
-5.) SELECT ENAME,SALARY FROM EMPLOYEE WHERE SALARY+COMMISSION>2850;
+5.) SELECT 
+		ENAME,SALARY 
+	FROM EMPLOYEE 
+		WHERE SALARY+COMMISSION>2850;
 _____________________________________________________________________________________________________________________________________
-6.) SELECT ENAME,DNO FROM EMPLOYEE WHERE ENO='7900';
+6.) SELECT 
+		ENAME,DNO 
+	FROM EMPLOYEE 
+		WHERE ENO='7900';
 _____________________________________________________________________________________________________________________________________
-7.) SELECT ENAME,SALARY FROM EMPLOYEE WHERE SALARY<1500 OR SALARY >2850;
+7.) SELECT 
+		ENAME,SALARY 
+	FROM EMPLOYEE 
+		WHERE SALARY<1500 OR SALARY >2850;
 _____________________________________________________________________________________________________________________________________
-8.) SELECT ENAME,DNO FROM EMPLOYEE WHERE DNO=10 OR DNO=30 ORDER BY ENAME ASC;
+8.) SELECT 
+		ENAME,DNO 
+	FROM EMPLOYEE 
+		WHERE DNO=10 OR DNO=30 
+			ORDER BY ENAME ASC;
 _____________________________________________________________________________________________________________________________________
-9.) SELECT ENAME,HIRE_DATE FROM EMPLOYEE WHERE HIRE_DATE LIKE"1981%";
+9.) SELECT 
+		ENAME,HIRE_DATE 
+	FROM EMPLOYEE 
+		WHERE HIRE_DATE LIKE"1981%";
 _____________________________________________________________________________________________________________________________________
-10.) SELECT ENAME,JOB_TYPE FROM EMPLOYEE WHERE MANAGER IS NULL;
+10.) SELECT 
+		ENAME,JOB_TYPE 
+	FROM EMPLOYEE 
+		WHERE MANAGER IS NULL;
 _____________________________________________________________________________________________________________________________________
-11.) SELECT ENAME,SALARY,COMMISSION FROM EMPLOYEE WHERE COMMISSION>0.00;
+11.) SELECT 
+		ENAME,SALARY,COMMISSION 
+	FROM EMPLOYEE 
+		WHERE COMMISSION>0.00;
 _____________________________________________________________________________________________________________________________________
-12&13.) SELECT ENAME FROM EMPLOYEE WHERE ENAME LIKE"__A%" ORDER BY SALARY AND COMMISSION DESC;
+12&13.) SELECT 
+			ENAME 
+		FROM EMPLOYEE 
+			WHERE ENAME LIKE"__A%" 
+				ORDER BY SALARY AND COMMISSION DESC;
 _____________________________________________________________________________________________________________________________________
-14.) SELECT ENAME FROM EMPLOYEE WHERE (ENAME LIKE"%R%R%" OR ENAME LIKE"%A%A%") AND DNO=30 OR MANAGER='7788';
+14.) SELECT 
+		ENAME 
+	FROM EMPLOYEE 
+		WHERE (ENAME LIKE"%R%R%" OR ENAME LIKE"%A%A%") AND DNO=30 OR MANAGER='7788';
 _____________________________________________________________________________________________________________________________________
-15.) SELECT ENAME,SALARY,COMMISSION FROM EMPLOYEE WHERE COMMISSION = 14+SALARY+(SALARY*5/100);
+15.) SELECT 
+		ENAME,SALARY,COMMISSION 
+	FROM EMPLOYEE 
+		WHERE COMMISSION = 14+SALARY+(SALARY*5/100);
 _____________________________________________________________________________________________________________________________________
-16.) SELECT CURDATE();
+16.) SELECT 
+		CURDATE();
 _____________________________________________________________________________________________________________________________________
-17.) SELECT ENAME,HIRE_DATE,CASE
-	    WHEN DAYOFWEEK(HIRE_DATE + INTERVAL 6 MONTH) <= 2 THEN (HIRE_DATE + INTERVAL 6 MONTH) + INTERVAL (2-DAYOFWEEK(HIRE_DATE + INTERVAL 6 MONTH)) DAY
-	    ELSE (HIRE_DATE + INTERVAL 6 MONTH) + INTERVAL (7 - DAYOFWEEK(HIRE_DATE + INTERVAL 6 MONTH)+2) DAY
-    END AS SALARY_REVIEW_DATE
+17.) SELECT 
+		ENAME,HIRE_DATE,
+		CASE
+		    WHEN DAYOFWEEK(HIRE_DATE + INTERVAL 6 MONTH) <= 2 
+		    	THEN (HIRE_DATE + INTERVAL 6 MONTH) + INTERVAL (2-DAYOFWEEK(HIRE_DATE + INTERVAL 6 MONTH)) DAY
+	    	ELSE (HIRE_DATE + INTERVAL 6 MONTH) + INTERVAL (7 - DAYOFWEEK(HIRE_DATE + INTERVAL 6 MONTH)+2) DAY
+    	END AS SALARY_REVIEW_DATE
     FROM EMPLOYEE;
 
 _____________________________________________________________________________________________________________________________________
-18.) SELECT ENAME,TIMESTAMPDIFF(MONTH,HIRE_DATE,NOW()) AS MONTHS FROM EMPLOYEE;
+18.) SELECT 
+		ENAME,TIMESTAMPDIFF(MONTH,HIRE_DATE,NOW()) AS MONTHS 
+	FROM EMPLOYEE;
 _____________________________________________________________________________________________________________________________________
-19.) SELECT CONCAT(ENAME,' EARNS ',SALARY,' MONTHLY BUT WANTS ',SALARY*3) AS 'DREAM SALARY' FROM EMPLOYEE;
+19.) SELECT 
+		CONCAT(ENAME,' EARNS ',SALARY,' MONTHLY BUT WANTS ',SALARY*3) AS 'DREAM SALARY' 
+	FROM EMPLOYEE;
 _____________________________________________________________________________________________________________________________________
-20.) 
+20.) SELECT 
+		CONCAT(UPPER(SUBSTR(ENAME, 1, 1)), LOWER(SUBSTR(ENAME, 2, LENGTH(ENAME) - 1))) AS NAMES, LENGTH(ENAME) AS LENGTH 
+	FROM EMPLOYEE WHERE ENAME LIKE("J%") OR ENAME LIKE("A%") OR ENAME LIKE("M%");
+
 _____________________________________________________________________________________________________________________________________
-21.) SELECT ENAME,HIRE_DATE,DAYOFWEEK(HIRE_DATE) FROM EMPLOYEE;
+21.) SELECT 
+		ENAME,HIRE_DATE,DAYOFWEEK(HIRE_DATE) 
+	FROM EMPLOYEE;
 _____________________________________________________________________________________________________________________________________
-22.) SELECT ENAME,DNAME,EMPLOYEE.DNO FROM EMPLOYEE JOIN DEPARTMENT ON EMPLOYEE.DNO=DEPARTMENT.DNO;
+22.) SELECT 
+		ENAME,DNAME,EMPLOYEE.DNO 
+	FROM EMPLOYEE 
+		JOIN DEPARTMENT 
+			ON EMPLOYEE.DNO=DEPARTMENT.DNO;
 _____________________________________________________________________________________________________________________________________
-23.) SELECT DISTINCT JOB_TYPE FROM EMPLOYEE WHERE DNO=30;
+23.) SELECT 
+		DISTINCT JOB_TYPE 
+	FROM EMPLOYEE 
+		WHERE DNO=30;
 _____________________________________________________________________________________________________________________________________
-24.) SELECT ENAME,DNAME FROM EMPLOYEE JOIN DEPARTMENT ON EMPLOYEE.DNO=DEPARTMENT.DNO WHERE ENAME LIKE"%A%";
+24.) SELECT 
+		ENAME,DNAME 
+	FROM EMPLOYEE 
+		JOIN DEPARTMENT 
+			ON EMPLOYEE.DNO=DEPARTMENT.DNO 
+		WHERE ENAME LIKE"%A%";
 _____________________________________________________________________________________________________________________________________
-25.) SELECT ENAME,JOB_TYPE,EMPLOYEE.DNO,DNAME FROM EMPLOYEE JOIN DEPARTMENT ON EMPLOYEE.DNO=DEPARTMENT.DNO WHERE ENAME LIKE"%A%";
+25.) SELECT 
+		ENAME,JOB_TYPE,EMPLOYEE.DNO,DNAME 
+	FROM EMPLOYEE 
+		JOIN DEPARTMENT 
+			ON EMPLOYEE.DNO=DEPARTMENT.DNO 
+		WHERE ENAME LIKE"%A%";
 _____________________________________________________________________________________________________________________________________
-26.) 
+26.) SELECT 
+		A.ENAME, A.ENO, B.ENAME AS "MANAGER NAME", B.ENO AS "MANAGER EMPLOYEE NUMBER" 
+	FROM EMPLOYEE A 
+		LEFT JOIN  EMPLOYEE B 
+			ON A.MANAGER=B.ENO;
 _____________________________________________________________________________________________________________________________________
 27.) 
 _____________________________________________________________________________________________________________________________________
-28.) 
+28.) SELECT 
+		ENAME, REPEAT("*", SALARY/100) AS SALARY 
+	FROM EMPLOYEE;
 _____________________________________________________________________________________________________________________________________
-29.) 
+29.) SELECT 
+		MAX(SALARY) AS HIGHEST, MIN(SALARY) AS LOWEST, SUM(SALARY) AS SUM, AVG(SALARY) AS AVERAGE 
+	FROM EMPLOYEE;
 _____________________________________________________________________________________________________________________________________
-30.) 
+30.) SELECT 
+		JOB_TYPE, COUNT(*) AS "NUMBER OF EMPLOYEES" 
+	FROM EMPLOYEE 
+		GROUP BY JOB_TYPE;
 _____________________________________________________________________________________________________________________________________
-31.) 
+31.) SELECT 
+		COUNT(DISTINCT MANAGER) AS "NUMBER OF MANAGERS" 
+	FROM EMPLOYEE;
 _____________________________________________________________________________________________________________________________________
-32.) 
+32.) SELECT 
+		DNAME, LOCATION,COUNT(*) AS "NUMBER OF EMPLOYEES",AVG(SALARY) AS "AVERAGE SALARY" 
+	FROM EMPLOYEE 
+		JOIN DEPARTMENT ON EMPLOYEE.DNO=DEPARTMENT.DNO 
+			GROUP BY DNAME;
 _____________________________________________________________________________________________________________________________________
-33.) 
+33.) SELECT
+		DISTINCT ENAME, HIRE_DATE 
+	FROM EMPLOYEE 
+		INNER JOIN DEPARTMENT 
+			ON EMPLOYEE.DNO=(SELECT 
+								EMPLOYEE.DNO 
+							FROM EMPLOYEE 
+								WHERE ENAME = "BLAKE");
 _____________________________________________________________________________________________________________________________________
-34.) 
+34.) SELECT 
+		ENO, ENAME 
+	FROM EMPLOYEE 
+		WHERE (SALARY+COMMISSION)>(SELECT
+										AVG(SALARY) 
+									FROM EMPLOYEE);
 _____________________________________________________________________________________________________________________________________
-35.) 
+35.) SELECT 
+		ENO, ENAME 
+	FROM EMPLOYEE 
+		JOIN DEPARTMENT 
+			ON EMPLOYEE.DNO=DEPARTMENT.DNO 
+		WHERE DNAME IN (SELECT 
+							DISTINCT DNAME 
+						FROM DEPARTMENT 
+							INNER JOIN EMPLOYEE 
+								ON DEPARTMENT.DNO=EMPLOYEE.DNO 
+							WHERE ENAME LIKE"%T%" 
+								GROUP BY DNAME);
 _____________________________________________________________________________________________________________________________________
-36.) 
+36.) SELECT 
+		ENAME, SALARY 
+	FROM EMPLOYEE 
+		WHERE MANAGER = (SELECT 
+							ENO 
+						FROM EMPLOYEE 
+							WHERE ENAME = "KING");
 _____________________________________________________________________________________________________________________________________
-37.) 
+37.) SELECT 
+		DISTINCT EMPLOYEE.DNO, ENAME, JOB_TYPE 
+	FROM EMPLOYEE 
+		JOIN DEPARTMENT 
+			ON EMPLOYEE.DNO = (SELECT
+									DNO 
+								FROM DEPARTMENT 
+									WHERE DNAME = "SALES");
+
+
 _____________________________________________________________________________________________________________________________________
 -------------------------------------------------------------------------------------------------------------------------------------
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
